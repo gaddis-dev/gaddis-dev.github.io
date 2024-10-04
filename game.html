@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>guess the word</title>
     <style>
-        .copyright {
-            top: 0px;
-            left: 0px;
-        }
-        
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -48,14 +43,18 @@
     <button id="guessButton">Guess</button>
     <div id="message"></div>
 
-    <label class="copyright">Copyright Jaxon Lowery</label>
+    <label id="copyright">Copyright Jaxon Lowery</label>
 
     <script>
         const words = ["kind", "jungle", "apple", "good", "open", "door", "mean", "jingle", "bob", "jibby"];
+        const copyright = document.getElementById('copyright');
         let selectedWord = words[Math.floor(Math.random() * words.length)];
         let displayedWord = "_".repeat(selectedWord.length).split("");
         let attempts = 0;
 
+        copyright.top = '0px';
+        copyright.left = '0px';
+        
         document.getElementById('guessButton').addEventListener('click', function() {
             const letterInput = document.getElementById('letterInput');
             const guessedLetter = letterInput.value.toLowerCase();
