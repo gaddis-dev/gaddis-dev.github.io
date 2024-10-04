@@ -52,8 +52,8 @@
         let displayedWord = "_".repeat(selectedWord.length).split("");
         let attempts = 0;
 
-        copyright.top = '0px';
-        copyright.left = '0px';
+        copyright.style.top = '0px';
+        copyright.style.left = '0px';
         
         document.getElementById('guessButton').addEventListener('click', function() {
             const letterInput = document.getElementById('letterInput');
