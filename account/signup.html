@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title></title>
+  <title>Sign Up - Gaddis-Dev</title>
   <style>
     body {
       background-color: #333;
@@ -22,10 +22,12 @@
   <div>
     <button onclick="submit()">Submit</button>
   </div>
+  <div>
+    <button onclick="localStorage.clear()">Clear</button>
+  </div>
   <p id="output"></p>
   
   <script>
-    localStorage.clear();
     const output = document.getElementById('output');
     const checkbox = document.getElementById('hidden');
     const passwordBox = document.getElementById('password');
