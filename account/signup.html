@@ -8,10 +8,59 @@
   </style>
 </head>
 <body>
-  <input type="text" id="username">
-  <button>Submit</button>
+  <h1>Signup</h1>
+  <div>
+    <input type="text" id="username" placeholder="username">
+  </div>
+  <div>
+    <input type="text" id="displayName" placeholder="display name">
+  </div>
+  <div>
+    <input type="password" id="password" placeholder="password">
+    <input type="checkbox" id="hidden" checked>
+  </div>
+  <div>
+    <button onclick="submit()">Submit</button>
+  </div>
+  <p id="output"></p>
+  
   <script>
+    localStorage.clear();
+    const output = document.getElementById('output');
+    const checkbox = document.getElementById('hidden');
+    const passwordBox = document.getElementById('password');
     
+    function hidden() {
+      if (checkbox.checked) {
+        passwordBox.type = 'password';
+      } else {
+        passwordBox.type = 'text';
+      }
+    }
+
+    checkbox.addEventListener('change', hidden);
+    
+    function submit() {
+      let error = null;
+      let username = document.getElementById('username').value;
+      let displayName = document.getElementById('displayName').value;
+      let password = passwordBox.value;
+
+      if (!username || !displayName || !password) {
+        error = 'Please fill out all required forms.';
+      } else if (localStorage.getItem(username)) {
+        error = 'Username already taken. Please try another.';
+      } else if (password.length < 8) {
+        error = 'Password should be at least 8 characters.';
+      }
+
+      if (error) {
+        output.innerHTML = error;
+      } else {
+        localStorage.setItem(username, [password, displayName]);
+        output.innerHTML = 'Account successfully created.';
+      }
+    }
   </script>
 </body>
 </html>
