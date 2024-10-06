@@ -1,71 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sign Up - Gaddis-Dev</title>
-  <style>
-    body {
-      background-color: #333;
-    }
-  </style>
+    <title>Sign Up - Gaddis-Dev</title>
+    <style>
+        body {
+            background-color: #333;
+        }
+    </style>
 </head>
 <body>
-<h1>Sign-up</h1>
-  <div>
-    <input type="text" id="displayName" placeholder="display name">
-  </div>
-  <div>
-    <input type="text" id="username" placeholder="username">
-  </div>
-  <div>
-    <input type="password" id="password" placeholder="password">
-    <input type="checkbox" id="hidden" checked>
-  </div>
-  <div>
-    <button onclick="submit()">Submit</button>
-  </div>
-  <div>
-    <button onclick="localStorage.clear()">Clear</button>
-  </div>
-  <p id="output"></p>
-  
-  <script>
-    const output = document.getElementById('output');
-    const checkbox = document.getElementById('hidden');
-    const passwordBox = document.getElementById('password');
+
+    <h1>Sign-up</h1>
+    <div>
+        <input type="text" id="displayName" placeholder="display name">
+    </div>
+    <div>
+        <input type="text" id="username" placeholder="username">
+    </div>
+    <div>
+        <input type="password" id="password" placeholder="password">
+        <input type="checkbox" id="hidden" checked>
+    </div>
+    <div>
+        <button onclick="submit()">Submit</button>
+    </div>
+    <div>
+        <button onclick="localStorage.clear()">Clear</button>
+    </div>
+    <p id="output"></p>
     
-    function hidden() {
-      if (checkbox.checked) {
-        passwordBox.type = 'password';
-      } else {
-        passwordBox.type = 'text';
-      }
-    }
+    <script>
+        const output = document.getElementById('output');
+        const checkbox = document.getElementById('hidden');
+        const passwordBox = document.getElementById('password');
+        
+        function hidden() {
+            if (checkbox.checked) {
+                passwordBox.type = 'password';
+            } else {
+                passwordBox.type = 'text';
+            }
+        }
 
-    checkbox.addEventListener('change', hidden);
-    
-    function submit() {
-      let error = null;
-      let username = document.getElementById('username').value;
-      let displayName = document.getElementById('displayName').value;
-      let password = passwordBox.value;
+        checkbox.addEventListener('change', hidden);
+        
+        function submit() {
+            let error = null;
+            let username = document.getElementById('username').value;
+            let displayName = document.getElementById('displayName').value;
+            let password = passwordBox.value;
 
-      if (!username || !displayName || !password) {
-        error = 'Please fill out all required forms.';
-      } else if (localStorage.getItem(username)) {
-        error = 'Username already taken. Please try another.';
-      } else if (password.length < 8) {
-        error = 'Password should be at least 8 characters.';
-      }
+            if (!username || !displayName || !password) {
+                error = 'Please fill out all required forms.';
+            } else if (localStorage.getItem(username)) {
+                error = 'Username already taken. Please try another.';
+            } else if (password.length < 8) {
+                error = 'Password should be at least 8 characters.';
+            }
 
-      if (error) {
-        output.innerHTML = error;
-      } else {
-        localStorage.setItem(username, [password, displayName]);
-        localStorage.setItem('currentAccount', username);
-        output.innerHTML = 'Account successfully created.';
-        window.location.href = '../home/';
-      }
-    }
-  </script>
+            if (error) {
+                output.innerHTML = error;
+            } else {
+                localStorage.setItem(username, [password, displayName]);
+                localStorage.setItem('currentAccount', username);
+                output.innerHTML = 'Account successfully created.';
+                window.location.href = '../home/';
+            }
+        }
+    </script>
 </body>
 </html>

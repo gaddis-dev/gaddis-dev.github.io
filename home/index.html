@@ -12,13 +12,16 @@
     </style>
 </head>
 <body>
+    
     <h1>Gaddis-Dev</h1>
     <button class="accountButton" onclick="window.location.href = '../account/signup'">Sign up</button>
     <button class="accountButton" onclick="window.location.href = '../account/login'">Log in</button>
 
     <script>
         if (localStorage.getItem('currentAccount')) {
-            document.querySelector('.accountButton').style.display = 'none';
+            document.querySelectorAll('.accountButton').forEach(function(button) {
+                button.style.display = 'none';
+            });
         }
     </script>
 </body>
