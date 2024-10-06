@@ -23,7 +23,7 @@
 
     <script>
         if (localStorage.getItem('currentAccount')) {
-            document.querySelector('logoutButton').style.display = 'block';
+            document.querySelector('.logoutButton').style.display = 'block';
             document.querySelectorAll('.accountButton').forEach(function(button) {
                 button.style.display = 'none';
             });
