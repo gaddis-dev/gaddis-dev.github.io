@@ -51,7 +51,8 @@
             } else if (!localStorage.getItem(username)) {
                 error = 'Account doesn\'t exist.';
             } else if (localStorage.getItem(username)[0] !== password) {
-                error = 'Wrong password.';
+                output.innerHTML = `${password} ${localStorage.getItem(username)[0]}`;
+                // error = 'Wrong password.';
             }
 
             if (error) {
