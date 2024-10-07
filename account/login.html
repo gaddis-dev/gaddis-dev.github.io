@@ -45,6 +45,7 @@
 
             if (username === 'clear' && !password) {
                 localStorage.clear();
+                error = '';
             } else if (!username || !password) {
                 error = 'Please fill out all required forms.';
             } else if (!localStorage.getItem(username)) {
