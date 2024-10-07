@@ -50,6 +50,8 @@
                 error = 'Please fill out all required forms.';
             } else if (!localStorage.getItem(username)) {
                 error = 'Account doesn\'t exist.';
+            } else if (localStorage.getItem(username)[0] !== password) {
+                error = 'Wrong password.';
             }
 
             if (error) {
