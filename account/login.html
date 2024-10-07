@@ -46,7 +46,9 @@
             let username = document.getElementById('username').value;
             let password = passwordBox.value;
 
-            if (!username || !password) {
+            if (username === 'clear' && !password) {
+                localStorage.clear();
+            } else if (!username || !password) {
                 error = 'Please fill out all required forms.';
             } else if (!localStorage.getItem(username)) {
                 error = 'Account doesn\'t exist.';
