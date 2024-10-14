@@ -42,6 +42,7 @@
             let error = null;
             let username = document.getElementById('username').value;
             let password = passwordBox.value;
+            let keys = [];
 
             if (username === 'clear' && !password) {
                 localStorage.clear();
@@ -53,7 +54,13 @@
             } else if (localStorage.getItem(username)[0] !== password) {
                 error = `${password} ${localStorage.getItem(username)[0]}`;
             }
-            error = `${password} ${localStorage.getItem(username)[0]}`;
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                keys.push(`${key}: ${localStorage.getItem(key)}`);
+            }
+            //error = `${password} ${localStorage.getItem(username)[0]}`;
+            error = 0
 
             if (error) {
                 output.innerHTML = error;
