@@ -46,7 +46,7 @@
 
             if (username === 'clear' && !password) {
                 localStorage.clear();
-                error = 'aight bet';
+                error = `${localStorage.length}`;
             } else if (!username || !password) {
                 error = 'Please fill out all required forms.';
             } else if (!localStorage.getItem(username)) {
@@ -60,7 +60,7 @@
                 keys.push(`${key}: ${localStorage.getItem(key)}`);
             }
             //error = `${password} ${localStorage.getItem(username)[0]}`;
-            error = 0
+            // error = 0
 
             if (error) {
                 output.innerHTML = error;
