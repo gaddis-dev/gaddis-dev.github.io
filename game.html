@@ -33,6 +33,11 @@
             font-size: 24px;
             margin: 20px 0;
         }
+        #copyright {
+            position: 'absolute';
+            bottom: 100vh;
+            right: 100vw;
+        }
     </style>
 </head>
 <body>
@@ -51,10 +56,6 @@
         let selectedWord = words[Math.floor(Math.random() * words.length)];
         let displayedWord = "_".repeat(selectedWord.length).split("");
         let attempts = 0;
-
-        copyright.style.position = 'absolute';
-        copyright.style.bottom = '100vh';
-        copyright.style.right = '100vw';
         
         document.getElementById('guessButton').addEventListener('click', function() {
             const letterInput = document.getElementById('letterInput');
