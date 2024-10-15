@@ -51,7 +51,7 @@
                 error = 'Please fill out all required forms.';
             } else if (!localStorage.getItem(username)) {
                 error = 'Account doesn\'t exist.';
-            } else if (localStorage.getItem(username)[0] !== password) {
+            } else if (localStorage.getItem(username).split(':')[0] !== password) {
                 error = `${password} ${localStorage.getItem(username)}`;
             }
 

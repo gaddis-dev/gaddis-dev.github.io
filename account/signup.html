@@ -59,7 +59,7 @@
             if (error) {
                 output.innerHTML = error;
             } else {
-                localStorage.setItem(username, [password, displayName]);
+                localStorage.setItem(username, `$(password):$(displayName)`);
                 localStorage.setItem('currentAccount', username);
                 output.innerHTML = 'Account successfully created.';
                 window.location.href = '../home/';
