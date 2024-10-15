@@ -52,7 +52,7 @@
             } else if (!localStorage.getItem(username)) {
                 error = 'Account doesn\'t exist.';
             } else if (localStorage.getItem(username).split(':')[0] !== password) {
-                error = `${password} ${localStorage.getItem(username)}`;
+                error = `${password} ${localStorage.getItem(username).split(':')[0]}`;
             }
 
             for (let i = 0; i < localStorage.length; i++) {
