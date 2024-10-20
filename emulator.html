@@ -16,19 +16,19 @@
 
     <script>
         Dos(document.getElementById("dos")).then(function (runtime) {
-            // Mount the /c directory and add the sound.wav file from GitHub Pages
-            runtime.fs.mount("/c", function (path) {
+            // Mount the /d directory and add the sound.wav file
+            runtime.fs.mount("/d", function (path) {
                 return fetch("https://gaddis-dev.github.io/ALL%20MY%20FELLAS%20(FRIZKY).wav")
                     .then(response => response.arrayBuffer())
                     .then(buffer => {
-                        // Create the sound.wav file in the js-dos virtual filesystem under C:
+                        // Create the sound.wav file in the js-dos virtual filesystem under D:
                         runtime.fs.createFile(path + "sound.wav", new Uint8Array(buffer));
                     });
             });
 
-            // Run DOS commands without imgmount (since it's not for .wav files)
+            // Run DOS commands to switch to D: drive
             runtime.main([
-                "-c", "C:",                 // Switch to the C: drive where the file is mounted
+                "-c", "D:",                 // Switch to the D: drive where the .wav file is mounted
                 "-c", "dir",                // List files to verify sound.wav is there
                 "-c", "echo File mounted!"  // Echo a success message
             ]);
