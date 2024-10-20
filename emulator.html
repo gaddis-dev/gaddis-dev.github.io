@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js-dos Emulator</title>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        #dos {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <!-- js-dos style sheet -->
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+
+    <!-- js-dos script -->
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+</head>
+<body>
+  <h1 id="goof">thingy</h1>
+  <div id="dos"></div>
+
+  <script>
+    Dos(document.getElementById("dos")).then(function (runtime) {
+      runtime.fs.mount("/", function (path) {
+        return fetch("https://gaddis-dev.github.io/ALL%20MY%20FELLAS%20(FRIZKY).wav")
+          .then(response => response.arrayBuffer())
+          .then(buffer => {
+            // Create the file in the js-dos virtual filesystem
+            runtime.fs.createFile(path + "sound.wav", new Uint8Array(buffer));
+          });
+      });
+
+      // Start the DOS program or script
+      runtime.main(["-c", "echo Mounted sound.wav successfully", "-c", "dir"]);
+    }).catch(function (error) {
+      document.getElementById('goof').innerHTML = error.message;
+    });
+  </script>
+</body>
+</html>
