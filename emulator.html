@@ -16,25 +16,8 @@
 
     <script>
         Dos(document.getElementById("dos")).then(function (runtime) {
-            // Mount the /d directory and add the sound.wav file
-            runtime.fs.mount("/d", function (path) {
-                return fetch("https://gaddis-dev.github.io/ALL%20MY%20FELLAS%20(FRIZKY).wav")
-                    .then(response => response.arrayBuffer())
-                    .then(buffer => {
-                        // Create the sound.wav file in the js-dos virtual filesystem under D:
-                        runtime.fs.createFile(path + "sound.wav", new Uint8Array(buffer));
-                    });
-            });
-
-            // Run DOS commands to switch to D: drive
-            runtime.main([
-                "-c", "D:",                 // Switch to the D: drive where the .wav file is mounted
-                "-c", "dir",                // List files to verify sound.wav is there
-                "-c", "echo File mounted!"  // Echo a success message
-            ]);
-        }).catch(function (error) {
-            document.getElementById("goof").innerHTML = error.message;
-        });
+            url: 'https://github.com/gaddis-dev/gaddis-dev.github.io/blob/970e5294e8217629afb0c451f82b4d11a0fbb847/win%2098.jsdos'
+        }
     </script>
 </body>
 </html>
