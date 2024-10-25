@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Soundboard</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <script>
+        // Load the audio context and audio source
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const gainNode = audioContext.createGain();
+        gainNode.gain.value = 2.0; // Increase gain (2.0 = 200% volume)
+        
+        // Fetch the sound file and connect to the gain node
+        fetch('uwu.mp3')
+            .then(response => response.arrayBuffer())
+            .then(data => audioContext.decodeAudioData(data))
+            .then(buffer => {
+                const source = audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.connect(gainNode).connect(audioContext.destination);
+        
+                document.getElementById('play-sound-btn').addEventListener('click', () => {
+                    const playSound = audioContext.createBufferSource();
+                    playSound.buffer = buffer;
+                    playSound.connect(gainNode).connect(audioContext.destination);
+                    playSound.start(0);
+                });
+            });
+    </script>
+</body>
+</html>
+<script>
