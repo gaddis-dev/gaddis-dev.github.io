@@ -2,16 +2,19 @@
 <head>
     <title>Soundboard</title>
     <style>
-
+        body {
+            background-color: #333;
+        }
     </style>
 </head>
 <body>
+    <h1>uwu</h1>
     <button id="play-sound-btn">play sound</button>
     <script>
         // Load the audio context and audio source
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const gainNode = audioContext.createGain();
-        gainNode.gain.value = 2.0; // Increase gain (2.0 = 200% volume)
+        gainNode.gain.value = 10.0; // Increase gain (2.0 = 200% volume)
         
         // Fetch the sound file and connect to the gain node
         fetch('uwu.mp3')
