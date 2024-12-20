@@ -4,12 +4,24 @@
     <title>Gaddis-Dev</title>
     <style>
         body {
+            margin: 10px;
             background-color: #333;
         }
+        h1 {
+            padding: 3px;
+            font-family: verdana;
+        }
+        .accountDiv {
+            display: flex;
+            gap: 5px;
+        }
         .accountButton {
+            background-color: #BBA;
+            border-radius: 7px;
+            padding: 3px;
             display: block;
         }
-        .logoutButton {
+        #logoutButton {
             display: none;
         }
     </style>
@@ -17,16 +29,18 @@
 <body>
 
     <h1>Gaddis-Dev</h1>
-    <button class="accountButton" onclick="window.location.href = '../account/signup'">Sign up</button>
-    <button class="accountButton" onclick="window.location.href = '../account/login'">Log in</button>
-    <button class="logoutButton" onclick="localStorage.removeItem('currentAccount'); location.reload()">Log out</button>
+    <div class="accountDiv">
+        <button class="accountButton" onclick="window.location.href = '../account/signup'">Sign Up</button>
+        <button class="accountButton" onclick="window.location.href = '../account/login'">Log In</button>
+    </div>
+    <button class="accountButton" id="logoutButton" onclick="localStorage.removeItem('currentAccount'); location.reload()">Log Out</button>
 
     <script>
         if (localStorage.getItem('currentAccount')) {
-            document.querySelector('.logoutButton').style.display = 'block';
             document.querySelectorAll('.accountButton').forEach(function(button) {
                 button.style.display = 'none';
             });
+            document.getElementById('logoutButton').style.display = 'block';
         }
     </script>
 </body>
